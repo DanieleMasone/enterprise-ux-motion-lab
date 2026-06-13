@@ -16,6 +16,7 @@ This is not a decorative animation gallery. The app models an internal risk oper
 - [Coverage report](https://danielemasone.github.io/enterprise-ux-motion-lab/coverage/)
 - [TypeDoc documentation](https://danielemasone.github.io/enterprise-ux-motion-lab/docs/)
 - [CI workflow](https://github.com/DanieleMasone/Enterprise-UX-Motion-Lab/actions/workflows/pages.yml)
+- [Accessibility checklist](project-docs/accessibility-checklist.md)
 
 ## Product Surface
 
@@ -33,6 +34,12 @@ Implemented capabilities:
 - Reduced-motion support through system preference detection
 - Keyboard-accessible controls, focus states, and command workflows
 - Responsive layout with horizontal table overflow where dense columns need space
+
+## Interface Overview
+
+The first screen is the working dashboard: KPI scan, governed filters, data-state controls, and the risk queue are all available without routing or landing-page framing. Desktop layouts prioritize side-by-side scanning. Tablet and mobile layouts keep controls readable while preserving the table as a horizontally scrollable enterprise data grid with priority signal context visible first.
+
+The command palette is intentionally compact. It supports keyboard opening, search, Enter execution, Escape close, focus containment, and focus restoration without adding roving-list complexity that the current command volume does not need.
 
 ## Architecture
 
@@ -97,9 +104,11 @@ The interface keeps enterprise information density intact while supporting acces
 - Empty states with recovery actions
 - Degraded states that disclose risk without blocking work
 
-## Performance Considerations
+## Interaction Performance
 
-The project keeps interaction cost low:
+Production builds are measured with Vite output and the lightweight `npm run build:stats` script. The current production build emits the app shell plus hashed CSS and JS assets; the most recent local build reported roughly `337.62 kB` JavaScript (`107.40 kB` gzip) and `15.33 kB` CSS (`3.50 kB` gzip).
+
+The project keeps interaction cost low by design:
 
 - No backend or unnecessary state management library
 - Short, centralized transitions
@@ -108,6 +117,8 @@ The project keeps interaction cost low:
 - Lightweight static Pages output
 - Pure filter helpers with small in-memory data
 - Generated artifacts excluded from source control
+
+Motion is centralized in `src/motion/` so interaction timing can stay short, consistent, and reduced-motion aware. Runtime dependencies are limited to React and Motion; testing, documentation, and browser automation stay in dev dependencies.
 
 ## Tooling
 
@@ -180,14 +191,8 @@ npm run test:e2e:ui
 npm run test:all
 npm run docs
 npm run build
+npm run build:stats
 npm run pages:build
 ```
 
 `npm run pages:build` produces `pages-dist/` with the app, coverage report, docs, and `.nojekyll`.
-
-## Roadmap
-
-- Add a small interaction performance note with measured build and bundle data
-- Add one or two visual screenshots after the first Pages deployment
-- Add optional keyboard roving behavior inside the command palette if command volume grows
-- Add a lightweight accessibility audit checklist after the UI settles

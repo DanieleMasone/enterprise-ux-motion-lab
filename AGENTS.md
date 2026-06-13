@@ -45,6 +45,10 @@ This repository demonstrates senior frontend architecture and functional UX moti
 - Keep TSDoc selective and useful.
 - Document reusable UI primitives, motion tokens, shared utilities, domain models, and interaction helpers when the contract is not obvious.
 - Do not add comments that restate the code.
+- Do not leave public TODO-style roadmap items in `README.md` unless they represent intentional product direction.
+- Keep performance notes evidence-based, using Vite output or `npm run build:stats`.
+- Keep screenshots lightweight and manually curated unless automation has a clear maintenance benefit.
+- Update `project-docs/accessibility-checklist.md` when relevant UX behavior changes.
 - Keep `npm run docs` working.
 
 ## CI And Pages Expectations
