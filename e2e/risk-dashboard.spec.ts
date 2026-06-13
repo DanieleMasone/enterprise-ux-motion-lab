@@ -1,4 +1,17 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+async function openCommandPaletteWithShortcut(page: Page) {
+  await expect(page.getByRole("button", { name: /commands/i })).toBeVisible();
+  await page.locator(".app-shell").click({ position: { x: 8, y: 8 } });
+  await page.keyboard.down("Control");
+  await page.keyboard.press("KeyK");
+  await page.keyboard.up("Control");
+
+  const dialog = page.getByRole("dialog", { name: /command palette/i });
+  await expect(dialog).toBeVisible();
+
+  return dialog;
+}
 
 test.describe("risk operations dashboard", () => {
   test("loads the operational surface", async ({ page }) => {
@@ -13,9 +26,7 @@ test.describe("risk operations dashboard", () => {
   test("opens, searches, executes, and closes the command palette from the keyboard", async ({ page }) => {
     await page.goto("./");
 
-    await page.keyboard.press("Control+K");
-    const dialog = page.getByRole("dialog", { name: /command palette/i });
-    await expect(dialog).toBeVisible();
+    const dialog = await openCommandPaletteWithShortcut(page);
 
     const search = page.getByLabel("Command search");
     await expect(search).toBeFocused();
@@ -24,7 +35,7 @@ test.describe("risk operations dashboard", () => {
     await page.keyboard.press("Escape");
     await expect(dialog).toBeHidden();
 
-    await page.keyboard.press("Control+K");
+    await openCommandPaletteWithShortcut(page);
     await page.getByLabel("Command search").fill("density");
     await page.keyboard.press("Enter");
 
