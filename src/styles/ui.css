@@ -33,12 +33,6 @@
   color: var(--color-text);
 }
 
-.button--danger {
-  background: var(--color-red-soft);
-  border-color: var(--color-red);
-  color: var(--color-red);
-}
-
 .button:hover:not(:disabled),
 .segmented-control__item:hover {
   border-color: var(--color-accent);

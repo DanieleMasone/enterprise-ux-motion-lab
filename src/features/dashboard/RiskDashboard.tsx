@@ -7,7 +7,6 @@ import { getTransition } from "../../motion/transitions";
 import { Button, DegradedBanner, EmptyState, SkeletonBlock, StatusBadge } from "../../ui";
 import {
   areRiskFiltersDefault,
-  defaultRiskFilters,
   filterRiskRecords,
   getRiskRegions,
   severityOrder,

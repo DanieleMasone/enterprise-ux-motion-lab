@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 const guidePaths = ["user-guide", "engineering"];
-const guideViewports = [1440, 390];
+const guideViewports = [1920, 1440, 1280, 1024, 768, 430, 390, 375, 360];
 
 test.describe("published documentation", () => {
   test("links dashboard, guides, TypeDoc, and coverage with persisted theme", async ({ page }) => {

@@ -19,7 +19,6 @@ export interface RiskRecord {
   confidence: number;
   impact: string;
   slaHours: number;
-  trend: TrendDirection;
   lastSeen: string;
   rootCause: string;
   recommendedAction: string;
@@ -50,7 +49,6 @@ export const riskRecords: RiskRecord[] = [
     confidence: 94,
     impact: "$2.4M daily GMV exposure",
     slaHours: 2,
-    trend: "up",
     lastSeen: "12 min ago",
     rootCause: "Issuer timeout variance increased after the routing policy update.",
     recommendedAction: "Shift 18% of traffic to the fallback acquirer and validate retry budget.",
@@ -67,7 +65,6 @@ export const riskRecords: RiskRecord[] = [
     confidence: 88,
     impact: "Delayed access reviews for 417 accounts",
     slaHours: 5,
-    trend: "flat",
     lastSeen: "24 min ago",
     rootCause: "A partner import job is retrying stale entitlement bundles.",
     recommendedAction: "Pause bundle sync and require reviewer attestation before replay.",
@@ -84,7 +81,6 @@ export const riskRecords: RiskRecord[] = [
     confidence: 81,
     impact: "Potential stockout risk across 29 locations",
     slaHours: 12,
-    trend: "down",
     lastSeen: "41 min ago",
     rootCause: "Weather enrichment feed lagged behind the latest regional closures.",
     recommendedAction: "Run a bounded backfill and keep override thresholds in compact review.",
@@ -101,7 +97,6 @@ export const riskRecords: RiskRecord[] = [
     confidence: 90,
     impact: "Manual quarantine for 7.8M events",
     slaHours: 4,
-    trend: "up",
     lastSeen: "53 min ago",
     rootCause: "New source schema changed nested address fields without metadata.",
     recommendedAction: "Apply schema contract override and replay only quarantined partitions.",
@@ -118,7 +113,6 @@ export const riskRecords: RiskRecord[] = [
     confidence: 74,
     impact: "SLA pressure on 1,260 claims",
     slaHours: 18,
-    trend: "flat",
     lastSeen: "1 hr ago",
     rootCause: "A rule package changed how collision photos are classified.",
     recommendedAction: "Route low-value claims through accelerated review while tuning the rule.",
@@ -135,7 +129,6 @@ export const riskRecords: RiskRecord[] = [
     confidence: 69,
     impact: "Next-day reconciliation window compressed",
     slaHours: 36,
-    trend: "down",
     lastSeen: "2 hr ago",
     rootCause: "Bank export endpoint throttled after month-end reporting.",
     recommendedAction: "Keep batch splitting active until the partner confirms capacity.",

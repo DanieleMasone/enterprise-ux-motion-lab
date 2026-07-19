@@ -13,20 +13,17 @@ export const motionTokens = {
   },
   easing: {
     productive: [0.2, 0, 0, 1] as const,
-    entrance: [0, 0, 0.2, 1] as const,
-    exit: [0.4, 0, 1, 1] as const
+    entrance: [0, 0, 0.2, 1] as const
   },
   distance: {
     subtle: 4,
-    panel: 8,
     overlay: 12
   },
   stagger: {
     listItem: 0.025
   },
   scale: {
-    press: 0.985,
-    affordance: 1.01
+    press: 0.985
   }
 } as const;
 
