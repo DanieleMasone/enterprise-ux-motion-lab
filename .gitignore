@@ -2,13 +2,13 @@
 node_modules/
 
 # Production and generated output
-dist/
-pages-dist/
-coverage/
-docs/
-playwright-report/
-test-results/
-blob-report/
+/dist/
+/pages-dist/
+/coverage/
+/docs/
+/playwright-report/
+/test-results/
+/blob-report/
 
 # Local environment
 .env
@@ -27,6 +27,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+debug.log
 .codex-*.log
 
 # OS and editor noise

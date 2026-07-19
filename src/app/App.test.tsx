@@ -9,6 +9,8 @@ describe("App", () => {
     render(<App />);
 
     expect(screen.getByRole("group", { name: /application controls/i })).toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: /project resources/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Dashboard" })).toHaveAttribute("aria-current", "page");
 
     await user.click(screen.getByRole("button", { name: "Dark" }));
     await user.click(screen.getByRole("button", { name: "Comfortable" }));

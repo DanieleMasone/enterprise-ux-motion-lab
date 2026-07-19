@@ -9,11 +9,13 @@ Use this checklist when changing interaction behavior, layout density, motion, o
 - Tab order reaches theme, density, data-state controls, filters, severity toggles, table detail actions, and command actions.
 - Command palette focus stays inside the dialog and returns to the launcher or prior focused control when closed.
 - Mouse and keyboard execution paths remain equivalent for command actions.
+- Authored guides provide a skip link and keyboard-reachable section navigation.
 
 ## Semantics And Focus
 
 - Native `button`, `input`, and `select` elements are preferred over custom controls.
 - Related control clusters expose group semantics when a visible label is not enough.
+- Project-resource navigation identifies the current dashboard or guide with `aria-current`.
 - Segmented controls expose selected state with `aria-pressed`.
 - Expandable table details expose `aria-expanded` and `aria-controls`.
 - Quantitative indicators such as confidence use semantic roles such as `meter`.
@@ -40,6 +42,7 @@ Use this checklist when changing interaction behavior, layout density, motion, o
 - Filters, KPI cards, detail panels, and dialogs do not create page-level horizontal overflow at mobile widths.
 - Touch targets remain readable at 360px wide.
 - Command palette stays within the viewport on desktop and mobile.
+- User and Engineering Guide navigation remains readable without page-level overflow.
 
 ## Verification
 

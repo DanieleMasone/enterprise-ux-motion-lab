@@ -1,9 +1,22 @@
 import react from "@vitejs/plugin-react";
+import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
 import { defineConfig } from "vitest/config";
+
+const root = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
   base: "/enterprise-ux-motion-lab/",
   plugins: [react()],
+  build: {
+    rolldownOptions: {
+      input: {
+        dashboard: resolve(root, "index.html"),
+        engineering: resolve(root, "engineering/index.html"),
+        userGuide: resolve(root, "user-guide/index.html")
+      }
+    }
+  },
   test: {
     environment: "jsdom",
     exclude: [

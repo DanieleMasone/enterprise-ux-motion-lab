@@ -42,6 +42,11 @@ This repository demonstrates senior frontend architecture and functional UX moti
 
 ## Documentation Expectations
 
+- Keep `README.md` as the concise repository entry point: positioning, primary links, architecture summary, quality gates, and local setup.
+- Keep end-user workflows in `src/docs/UserGuide.tsx`, published at `/enterprise-ux-motion-lab/user-guide/`.
+- Keep architecture, design-system, testing, performance, and delivery rationale in `src/docs/EngineeringGuide.tsx`, published at `/enterprise-ux-motion-lab/engineering/`.
+- Keep TypeDoc focused on exported TypeScript API contracts; do not move narrative guides into generated API documentation.
+- Update the documentation owner for any changed behavior instead of repeating the same explanation across README and guides.
 - Keep TSDoc selective and useful.
 - Document reusable UI primitives, motion tokens, shared utilities, domain models, and interaction helpers when the contract is not obvious.
 - Do not add comments that restate the code.
@@ -57,6 +62,8 @@ This repository demonstrates senior frontend architecture and functional UX moti
 - `scripts/prepare-pages.mjs` must copy the Vite app, coverage report, and TypeDoc docs into `pages-dist/`.
 - The expected public paths are:
   - `/enterprise-ux-motion-lab/`
+  - `/enterprise-ux-motion-lab/user-guide/`
+  - `/enterprise-ux-motion-lab/engineering/`
   - `/enterprise-ux-motion-lab/coverage/`
   - `/enterprise-ux-motion-lab/docs/`
 - Keep the CI workflow focused: install, typecheck, test, coverage, build, docs, package, deploy.

@@ -5,9 +5,11 @@ import { resolve } from "node:path";
 const root = process.cwd();
 const pagesDir = resolve(root, "pages-dist");
 const requiredOutputs = [
-  ["dist", "application build"],
-  ["coverage", "coverage report"],
-  ["docs", "TypeDoc documentation"]
+  ["dist/index.html", "dashboard build"],
+  ["dist/user-guide/index.html", "User Guide build"],
+  ["dist/engineering/index.html", "Engineering Guide build"],
+  ["coverage/index.html", "coverage report"],
+  ["docs/index.html", "TypeDoc documentation"]
 ];
 
 for (const [path, label] of requiredOutputs) {

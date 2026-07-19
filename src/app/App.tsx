@@ -4,7 +4,7 @@ import { CommandPalette, type CommandAction } from "../features/command-palette"
 import { RiskDashboard, defaultRiskFilters, type RiskFilters } from "../features/dashboard";
 import { getDataStateCopy } from "../features/loading-states";
 import { useReducedMotionPreference } from "../motion/reduced-motion";
-import { Button, SegmentedControl } from "../ui";
+import { Button, ResourceNavigation, SegmentedControl } from "../ui";
 import {
   dataStateOptions,
   getNextDataState,
@@ -118,6 +118,7 @@ export function App() {
             <p className="app-header__eyebrow">Enterprise UX Motion Lab</p>
             <strong>Risk operations control surface</strong>
             <span>{dataStateCopy.label}: {dataStateCopy.description}</span>
+            <ResourceNavigation current="dashboard" />
           </div>
           <div className="app-header__controls" role="group" aria-label="Application controls">
             <SegmentedControl

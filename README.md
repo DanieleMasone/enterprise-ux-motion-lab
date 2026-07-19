@@ -1,198 +1,65 @@
 # Enterprise UX Motion Lab
 
 [![CI and GitHub Pages](https://github.com/DanieleMasone/Enterprise-UX-Motion-Lab/actions/workflows/pages.yml/badge.svg)](https://github.com/DanieleMasone/Enterprise-UX-Motion-Lab/actions/workflows/pages.yml)
-[![React](https://img.shields.io/badge/React-19-0f766e)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-6-2563eb)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-8-9a6200)](https://vite.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-18201d)](LICENSE)
 
 A production-grade React and TypeScript portfolio project for functional UX micro-interactions in dense enterprise interfaces.
 
-This is not a decorative animation gallery. The app models an internal risk operations dashboard where motion helps users understand state changes, preserve orientation, expose detail progressively, and maintain confidence during loading or degraded telemetry.
+The application models an internal risk operations dashboard. Motion clarifies state change, progressive disclosure, feedback, and loading without reducing information density or turning the product into an animation showcase.
 
-**Links**
+## Project Resources
 
-- [Live demo](https://danielemasone.github.io/enterprise-ux-motion-lab/)
+- [Live dashboard](https://danielemasone.github.io/enterprise-ux-motion-lab/)
+- [User Guide](https://danielemasone.github.io/enterprise-ux-motion-lab/user-guide/)
+- [Engineering Guide](https://danielemasone.github.io/enterprise-ux-motion-lab/engineering/)
+- [TypeDoc API reference](https://danielemasone.github.io/enterprise-ux-motion-lab/docs/)
 - [Coverage report](https://danielemasone.github.io/enterprise-ux-motion-lab/coverage/)
-- [TypeDoc documentation](https://danielemasone.github.io/enterprise-ux-motion-lab/docs/)
 - [CI workflow](https://github.com/DanieleMasone/Enterprise-UX-Motion-Lab/actions/workflows/pages.yml)
 - [Accessibility checklist](project-docs/accessibility-checklist.md)
 
-## Product Surface
+## Product Overview
 
-The application simulates a risk-monitoring dashboard used by operations analysts, platform owners, risk managers, and audit stakeholders.
+The dashboard supports KPI scanning, governed risk filters, a dense horizontally scrollable data grid, progressive detail disclosure, keyboard commands, persisted theme and density preferences, and explicit loading, empty, and degraded states.
 
-Implemented capabilities:
+The User Guide documents the operating workflow. The Engineering Guide owns architecture, design-system, motion, testing, coverage, documentation, performance, and delivery decisions.
 
-- KPI cards for fast operational scanning
-- Dense anomaly and risk table with priority metadata
-- Search, region, status, and severity filters
-- Expandable detail panels with root cause, recommendation, and audit context
-- Command palette opened with `Ctrl+K` or `Cmd+K`
-- Dark mode and density toggles
-- Loading skeletons, empty states, and degraded telemetry disclosure
-- Reduced-motion support through system preference detection
-- Keyboard-accessible controls, focus states, and command workflows
-- Responsive layout with horizontal table overflow where dense columns need space
+## Architecture Summary
 
-## Interface Overview
+- `src/app/`: application shell and app-wide preference state
+- `src/features/`: dashboard, command palette, and data-state behavior
+- `src/ui/`: reusable controls and project-resource navigation
+- `src/motion/`: governed motion tokens, semantic transitions, and reduced-motion policy
+- `src/docs/`: authored User Guide and Engineering Guide pages
+- `src/styles/`: shared tokens and isolated UI, application, and documentation layouts
 
-The first screen is the working dashboard: KPI scan, governed filters, data-state controls, and the risk queue are all available without routing or landing-page framing. Desktop layouts prioritize side-by-side scanning. Tablet and mobile layouts keep controls readable while preserving the table as a horizontally scrollable enterprise data grid with priority signal context visible first.
-
-The command palette is intentionally compact. It supports keyboard opening, search, Enter execution, Escape close, focus containment, and focus restoration without adding roving-list complexity that the current command volume does not need.
-
-## Architecture
-
-```txt
-src/
-  app/                    Global app state and shell
-  data/                   Domain records and KPI models
-  features/
-    command-palette/      Command action model and palette UI
-    dashboard/            Risk queue, filters, KPI scan, details
-    loading-states/       Data resilience state copy
-  motion/                 Motion tokens, transitions, reduced-motion policy
-  styles/                 Global design layer and responsive CSS
-  test/                   Shared test setup
-  ui/                     Reusable primitives
-```
-
-The structure is feature-based because the project is meant to communicate maintainable product architecture, not isolated component demos. Shared UI primitives stay small. Domain logic such as filters and state transitions is pure where practical so it can be tested directly.
-
-## Motion Principles
-
-Motion is treated as a governed design-system layer.
-
-- Use centralized tokens in `src/motion/motion.tokens.ts`
-- Request semantic transitions from `src/motion/transitions.ts`
-- Respect system reduced-motion preferences through `src/motion/reduced-motion.ts`
-- Keep transitions short enough for repeated enterprise workflows
-- Animate state changes, panel disclosure, list entry, and feedback only when it improves comprehension
-- Avoid decorative motion, slow flourishes, and attention traps
-
-## Testing Strategy
-
-The test suite focuses on behavior that would matter in a real enterprise tool:
-
-- Command palette search, execution, and Escape handling
-- Browser-level command palette keyboard flow with `Ctrl+K`
-- Dark mode and density state changes
-- Filter narrowing and reset behavior
-- Expandable detail panel behavior
-- Loading, empty, and degraded states
-- Reduced-motion policy and transition collapse
-- Pure app-state and dashboard-filter helpers
-
-Coverage is generated with Vitest and V8 into `coverage/`, then copied into the GitHub Pages artifact under `/coverage/`. Playwright stays deliberately small: Chromium covers smoke, command palette, theme and density persistence, filtering, disclosure, and resilience states without adding a browser matrix or screenshot maintenance burden.
-
-## Documentation
-
-TypeDoc generates API documentation for public primitives, motion policy, domain models, and shared helpers. TSDoc comments are intentionally selective: they explain reusable contracts and policy decisions without narrating obvious component internals.
-
-Generated documentation is copied into the Pages artifact under `/docs/`.
-
-## Accessibility And UX Discipline
-
-The interface keeps enterprise information density intact while supporting accessible workflows:
-
-- Native buttons, inputs, and selects
-- `aria-pressed`, `aria-expanded`, `aria-controls`, status regions, and dialog semantics
-- Visible focus states
-- Keyboard command palette access
-- Reduced-motion support
-- Skeletons instead of generic loading spinners
-- Empty states with recovery actions
-- Degraded states that disclose risk without blocking work
-
-## Interaction Performance
-
-Production builds are checked with Vite output and the lightweight `npm run build:stats` script. The current Vite production output emits the app shell plus hashed CSS and JS assets; the most recent local build reported roughly `337.65 kB` JavaScript (`107.40 kB` gzip) and `15.44 kB` CSS (`3.52 kB` gzip).
-
-The project keeps interaction cost low by design:
-
-- No backend or unnecessary state management library
-- Short, centralized transitions
-- No long-running decorative animations
-- Vite production build
-- Lightweight static Pages output
-- Pure filter helpers with small in-memory data
-- Generated artifacts excluded from source control
-
-Motion is centralized in `src/motion/` so interaction timing can stay short, consistent, and reduced-motion aware. Runtime dependencies are limited to React and Motion; testing, documentation, and browser automation stay in dev dependencies.
-
-## Tooling
-
-- React 19, TypeScript 6, and Vite 8 for the application surface
-- Motion for functional, token-governed UI transitions
-- Vitest, Testing Library, jsdom, and V8 coverage for unit and component behavior
-- Playwright for focused browser-level user journeys
-- TypeDoc for generated API documentation
-- GitHub Actions and GitHub Pages for verification, packaging, and deployment
+Vite builds the dashboard and both guides as static HTML entry points. TypeDoc and coverage remain generated outputs, and `scripts/prepare-pages.mjs` assembles everything into one GitHub Pages artifact.
 
 ## Quality Gates
 
-Local and CI verification are intentionally explicit:
+```bash
+npm ci
+npm run typecheck
+npm run test
+npm run test:coverage
+npm run build
+npm run docs
+npm run test:e2e
+npm run pages:build
+```
 
-1. `npm ci`
-2. `npm run typecheck`
-3. `npm run test`
-4. `npm run test:coverage`
-5. `npm run build`
-6. `npm run docs`
-7. `npm run test:e2e`
-8. `npm run pages:build`
-
-Generated `dist/`, `coverage/`, `docs/`, `pages-dist/`, Playwright reports, and test results stay out of source control.
-
-## CI/CD And Pages
-
-`.github/workflows/pages.yml` runs:
-
-1. `npm ci`
-2. `npm run typecheck`
-3. `npm run test`
-4. `npm run test:coverage`
-5. `npm run build`
-6. `npm run docs`
-7. `npx playwright install --with-deps chromium`
-8. `npm run test:e2e`
-9. `node scripts/prepare-pages.mjs`
-10. GitHub Pages upload and deployment
-
-The published artifact contains:
-
-- `/enterprise-ux-motion-lab/` for the app
-- `/enterprise-ux-motion-lab/coverage/` for coverage
-- `/enterprise-ux-motion-lab/docs/` for TypeDoc
-
-## Trade-Offs
-
-- No router: the lab is a single operational surface, so routing would add structure without product value.
-- No global state library: local React state and pure helpers are enough for this scope.
-- Focused Playwright only: critical journeys run in Chromium without screenshot baselines or a browser matrix.
-- Plain CSS: the design system is small, static, and easier to audit without a styling dependency.
-- Static data: the portfolio goal is frontend UX and architecture, not backend integration.
+Generated application, documentation, coverage, Pages, and Playwright output stays outside source control.
 
 ## Local Development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-Useful scripts:
+Useful focused commands:
 
 ```bash
-npm run typecheck
-npm run test
-npm run test:coverage
-npm run test:e2e
 npm run test:e2e:ui
-npm run test:all
-npm run docs
-npm run build
 npm run build:stats
 npm run pages:build
 ```
-
-`npm run pages:build` produces `pages-dist/` with the app, coverage report, docs, and `.nojekyll`.
