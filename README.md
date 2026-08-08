@@ -63,3 +63,9 @@ npm run test:e2e:ui
 npm run build:stats
 npm run pages:build
 ```
+
+## License
+
+Released under the MIT License. See [LICENSE](LICENSE).
+
+Copyright (c) 2026 Daniele Masone.
