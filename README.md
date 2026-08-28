@@ -1,6 +1,6 @@
 # Enterprise UX Motion Lab
 
-[![CI and GitHub Pages](https://github.com/DanieleMasone/Enterprise-UX-Motion-Lab/actions/workflows/pages.yml/badge.svg)](https://github.com/DanieleMasone/Enterprise-UX-Motion-Lab/actions/workflows/pages.yml)
+[![CI and GitHub Pages](https://github.com/DanieleMasone/enterprise-ux-motion-lab/actions/workflows/pages.yml/badge.svg)](https://github.com/DanieleMasone/enterprise-ux-motion-lab/actions/workflows/pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-18201d)](LICENSE)
 
 A production-grade React and TypeScript portfolio project for functional UX micro-interactions in dense enterprise interfaces.
@@ -14,7 +14,7 @@ The application models an internal risk operations dashboard. Motion clarifies s
 - [Engineering Guide](https://danielemasone.github.io/enterprise-ux-motion-lab/engineering/)
 - [TypeDoc API reference](https://danielemasone.github.io/enterprise-ux-motion-lab/docs/)
 - [Coverage report](https://danielemasone.github.io/enterprise-ux-motion-lab/coverage/)
-- [CI workflow](https://github.com/DanieleMasone/Enterprise-UX-Motion-Lab/actions/workflows/pages.yml)
+- [CI workflow](https://github.com/DanieleMasone/enterprise-ux-motion-lab/actions/workflows/pages.yml)
 - [Accessibility checklist](project-docs/accessibility-checklist.md)
 
 ## Product Overview
