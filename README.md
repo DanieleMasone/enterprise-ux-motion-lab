@@ -1,7 +1,7 @@
 # Enterprise UX Motion Lab
 
-[![CI and GitHub Pages](https://github.com/DanieleMasone/enterprise-ux-motion-lab/actions/workflows/pages.yml/badge.svg)](https://github.com/DanieleMasone/enterprise-ux-motion-lab/actions/workflows/pages.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-18201d)](LICENSE)
+[![CI and GitHub Pages](https://github.com/DanieleMasone/enterprise-ux-motion-lab/actions/workflows/pages.yml/badge.svg?branch=main&event=push)](https://github.com/DanieleMasone/enterprise-ux-motion-lab/actions/workflows/pages.yml)
+[![Lines coverage](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdanielemasone.github.io%2Fenterprise-ux-motion-lab%2Fcoverage%2Fcoverage-summary.json&query=%24.total.lines.pct&suffix=%25&label=lines%20coverage)](https://danielemasone.github.io/enterprise-ux-motion-lab/coverage/)
 
 A production-grade React and TypeScript portfolio project for functional UX micro-interactions in dense enterprise interfaces.
 

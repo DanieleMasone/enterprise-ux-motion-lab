@@ -9,6 +9,7 @@ const requiredOutputs = [
   ["dist/user-guide/index.html", "User Guide build"],
   ["dist/engineering/index.html", "Engineering Guide build"],
   ["coverage/index.html", "coverage report"],
+  ["coverage/coverage-summary.json", "coverage summary"],
   ["docs/index.html", "TypeDoc documentation"]
 ];
 
