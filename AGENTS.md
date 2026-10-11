@@ -72,6 +72,8 @@ This repository demonstrates senior frontend architecture and functional UX moti
 
 ## Dependency Policy
 
+- Dependency maintenance is manual. Do not add Dependabot, Renovate, scheduled version checks, automated update pull requests, or persistent update tooling.
+- Target Node.js 24 LTS in local development and CI, with `@types/node` on major 24.
 - Do not introduce unnecessary dependencies.
 - Prefer mature, maintainable, enterprise-appropriate packages.
 - Avoid hype-driven animation or UI libraries.

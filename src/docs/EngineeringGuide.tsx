@@ -148,8 +148,8 @@ export function EngineeringGuide() {
           architecture changes.
         </p>
         <p>
-          The current Vite build reports approximately <strong>338.12 kB</strong> of dashboard JavaScript
-          (<strong>108.29 kB</strong> gzip) and <strong>15.79 kB</strong> of dashboard CSS
+          The current Vite build reports approximately <strong>367.18 kB</strong> of dashboard JavaScript
+          (<strong>116.88 kB</strong> gzip) and <strong>15.79 kB</strong> of dashboard CSS
           (<strong>3.94 kB</strong> gzip), including shared UI assets.
         </p>
       </section>
