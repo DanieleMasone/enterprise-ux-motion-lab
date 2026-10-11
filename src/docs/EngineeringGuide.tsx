@@ -97,7 +97,7 @@ export function EngineeringGuide() {
           </div>
           <div>
             <dt>Coverage</dt>
-            <dd>Vitest V8 emits text, HTML, and LCOV reports without targeting arbitrary 100% coverage.</dd>
+            <dd>Vitest V8 emits text, HTML, LCOV, and JSON summary reports without targeting arbitrary 100% coverage.</dd>
           </div>
         </dl>
         <p>
@@ -148,9 +148,9 @@ export function EngineeringGuide() {
           architecture changes.
         </p>
         <p>
-          The current Vite build reports approximately <strong>367.18 kB</strong> of dashboard JavaScript
-          (<strong>116.88 kB</strong> gzip) and <strong>15.79 kB</strong> of dashboard CSS
-          (<strong>3.94 kB</strong> gzip), including shared UI assets.
+          The current Vite build reports approximately <strong>367.30 kB</strong> of dashboard JavaScript
+          (<strong>116.91 kB</strong> gzip) and <strong>15.89 kB</strong> of dashboard CSS
+          (<strong>3.96 kB</strong> gzip), including shared UI assets.
         </p>
       </section>
     </DocumentationLayout>

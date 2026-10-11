@@ -25,10 +25,14 @@ export function UserGuide() {
           The dashboard opens directly on the operational surface. The header contains display and data-state controls,
           followed by four KPI cards and the governed risk queue.
         </p>
+        <p>
+          This is a static demonstration: the six sample risks, KPI values, and recency labels are illustrative. KPI cards
+          remain fixed when filters or data-state previews change; the queue count reflects the visible sample records.
+        </p>
         <dl className="documentation-definition-grid">
           <div>
             <dt>Open risk signals</dt>
-            <dd>Current queue volume and the subset requiring owner action.</dd>
+            <dd>Illustrative overall queue volume and the subset requiring owner action.</dd>
           </div>
           <div>
             <dt>Critical exposure</dt>
@@ -107,7 +111,8 @@ export function UserGuide() {
         </div>
         <p>
           <strong>Compact</strong> density prioritizes repeated scanning; <strong>Comfortable</strong> adds row space for
-          slower review. Light and dark themes persist locally across reloads.
+          slower review. Theme and density persist locally across reloads. The <strong>Focus risk filters</strong> command
+          closes the palette and places focus in the risk search field.
         </p>
       </section>
 

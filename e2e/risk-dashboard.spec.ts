@@ -13,7 +13,17 @@ async function openCommandPaletteWithShortcut(page: Page) {
   return dialog;
 }
 
-const auditedViewports = [1920, 1440, 1280, 1024, 768, 430, 390, 375, 360];
+const auditedViewports = [
+  { width: 1920, height: 1080 },
+  { width: 1440, height: 900 },
+  { width: 1280, height: 800 },
+  { width: 1024, height: 768 },
+  { width: 768, height: 1024 },
+  { width: 430, height: 932 },
+  { width: 390, height: 844 },
+  { width: 375, height: 812 },
+  { width: 360, height: 800 }
+];
 
 test.describe("risk operations dashboard", () => {
   test("loads the operational surface", async ({ page }) => {
@@ -43,6 +53,13 @@ test.describe("risk operations dashboard", () => {
 
     await expect(dialog).toBeHidden();
     await expect(page.getByRole("button", { name: "Comfortable" })).toHaveAttribute("aria-pressed", "true");
+
+    await page.getByRole("button", { name: /commands/i }).click();
+    await page.getByLabel("Command search").fill("focus risk");
+    await page.keyboard.press("Enter");
+
+    await expect(dialog).toBeHidden();
+    await expect(page.getByLabel("Search risks")).toBeFocused();
   });
 
   test("persists theme and density state", async ({ page }) => {
@@ -97,8 +114,8 @@ test.describe("risk operations dashboard", () => {
   });
 
   test("keeps responsive layouts readable without page-level horizontal overflow", async ({ page }) => {
-    for (const width of auditedViewports) {
-      await page.setViewportSize({ width, height: width >= 768 ? 900 : 780 });
+    for (const { width, height } of auditedViewports) {
+      await page.setViewportSize({ width, height });
       await page.goto("./");
 
       await expect(page.getByRole("heading", { name: "Operational risk queue" })).toBeVisible();
@@ -144,14 +161,23 @@ test.describe("risk operations dashboard", () => {
         ).toBeLessThanOrEqual(1);
       }
 
-      if (width === 1440 || width === 390) {
+      if (width === 1440 || width === 1024 || width === 390) {
         const dialog = await openCommandPaletteWithShortcut(page);
+        await expect(page.locator(".command-palette__dialog")).toHaveCSS("opacity", "1");
+        await page.locator(".command-palette__results").evaluate((element) => {
+          element.scrollTop = element.scrollHeight;
+        });
         const dialogBox = await page.locator(".command-palette__dialog").boundingBox();
+        const lastActionBox = await page.getByRole("button", { name: /expand top risk/i }).boundingBox();
 
         expect(dialogBox?.x ?? -1, `${width}px dialog should start inside viewport`).toBeGreaterThanOrEqual(0);
         expect((dialogBox?.x ?? 0) + (dialogBox?.width ?? 0), `${width}px dialog should end inside viewport`).toBeLessThanOrEqual(
           width
         );
+        expect(
+          (lastActionBox?.y ?? 0) + (lastActionBox?.height ?? 0),
+          `${width}px final command should be fully reachable by scrolling`
+        ).toBeLessThanOrEqual((dialogBox?.y ?? 0) + (dialogBox?.height ?? 0));
 
         await page.keyboard.press("Escape");
         await expect(dialog).toBeHidden();

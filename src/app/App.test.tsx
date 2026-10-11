@@ -71,7 +71,7 @@ describe("App", () => {
     await user.keyboard("{Enter}");
     expect(screen.getByText("Identity Provisioning")).toBeInTheDocument();
 
-    await user.keyboard("{Control>}k{/Control}");
+    await user.click(screen.getByRole("button", { name: /commands/i }));
     await user.type(screen.getByLabelText(/command search/i), "focus");
     await user.keyboard("{Enter}");
     expect(screen.getByLabelText(/search risks/i)).toHaveFocus();

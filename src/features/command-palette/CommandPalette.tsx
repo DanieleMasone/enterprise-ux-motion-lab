@@ -27,7 +27,11 @@ export function CommandPalette({ actions, open, reduceMotion, onClose }: Command
       setQuery("");
       const previous = previouslyFocusedElementRef.current;
 
-      if (previous?.isConnected) {
+      // Preserve focus deliberately moved by a command to its workflow target.
+      if (
+        previous?.isConnected &&
+        (document.activeElement === document.body || dialogRef.current?.parentElement?.contains(document.activeElement))
+      ) {
         previous.focus();
       }
 

@@ -10,7 +10,7 @@
   --color-muted: #5f6f68;
   --color-accent: #0f766e;
   --color-accent-strong: #115e59;
-  --color-blue: #2563eb;
+  --color-blue: #1d4ed8;
   --color-red: #b42318;
   --color-red-soft: #f8d7d4;
   --color-amber: #8a5600;
@@ -73,6 +73,7 @@
   --color-muted: #aab8b1;
   --color-accent: #2dd4bf;
   --color-accent-strong: #5eead4;
+  --color-on-accent: #111512;
   --color-blue: #93c5fd;
   --color-red: #fca5a5;
   --color-red-soft: #4a211f;

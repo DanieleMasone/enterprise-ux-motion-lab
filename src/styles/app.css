@@ -465,6 +465,8 @@
   border: var(--border-width-sm) solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--elevation-overlay);
+  display: flex;
+  flex-direction: column;
   left: 0;
   margin-inline: auto;
   max-height: min(72vh, var(--command-palette-max-height));
@@ -479,6 +481,7 @@
   align-items: flex-start;
   border-bottom: var(--border-width-sm) solid var(--color-border);
   display: flex;
+  flex-shrink: 0;
   gap: var(--space-3);
   justify-content: space-between;
   padding: var(--space-4);
@@ -507,6 +510,7 @@
   border-bottom: var(--border-width-sm) solid var(--color-border);
   color: var(--color-text);
   font-size: var(--font-size-lg);
+  flex-shrink: 0;
   min-height: var(--command-search-height);
   padding: 0 var(--space-4);
   width: 100%;
@@ -514,6 +518,7 @@
 
 .command-palette__results {
   max-height: 430px;
+  min-height: 0;
   overflow-y: auto;
 }
 

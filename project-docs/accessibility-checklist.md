@@ -8,6 +8,7 @@ Use this checklist when changing interaction behavior, layout density, motion, o
 - Escape closes dialogs and transient overlays.
 - Tab order reaches theme, density, data-state controls, filters, severity toggles, table detail actions, and command actions.
 - Command palette focus stays inside the dialog and returns to the launcher or prior focused control when closed.
+- Commands that intentionally move focus keep it on their workflow target, such as the risk search field.
 - Mouse and keyboard execution paths remain equivalent for command actions.
 - Authored guides provide a skip link and keyboard-reachable section navigation.
 
@@ -20,6 +21,8 @@ Use this checklist when changing interaction behavior, layout density, motion, o
 - Expandable table details expose `aria-expanded` and `aria-controls`.
 - Quantitative indicators such as confidence use semantic roles such as `meter`.
 - Focus-visible styling remains visible in light and dark themes.
+- Primary controls and guide skip links retain readable text contrast on the accent background in both themes.
+- Medium-severity filters and status badges retain readable text contrast on their tinted backgrounds in both themes.
 
 ## State Communication
 
@@ -42,6 +45,7 @@ Use this checklist when changing interaction behavior, layout density, motion, o
 - Filters, KPI cards, detail panels, and dialogs do not create page-level horizontal overflow at mobile widths.
 - Touch targets remain readable at 360px wide.
 - Command palette stays within the viewport on desktop and mobile.
+- All command results remain fully reachable by scrolling at constrained heights, including 1024x768 tablet landscape.
 - User and Engineering Guide navigation remains readable without page-level overflow.
 
 ## Verification

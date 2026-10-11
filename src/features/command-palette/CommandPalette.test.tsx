@@ -110,6 +110,11 @@ describe("CommandPalette", () => {
 
     await user.keyboard("{Escape}");
     await waitFor(() => expect(launcher).toHaveFocus());
+
+    await user.click(launcher);
+    await waitFor(() => expect(screen.getByLabelText(/command search/i)).toHaveFocus());
+    await user.click(screen.getByRole("button", { name: "Close command palette" }));
+    await waitFor(() => expect(launcher).toHaveFocus());
   });
 
   it("prevents tab escape when no focusable dialog control is available", () => {

@@ -17,7 +17,7 @@ export function DegradedBanner({ visible }: DegradedBannerProps) {
       <StatusBadge label="degraded" />
       <div>
         <strong>Telemetry delay detected</strong>
-        <p>Signals are current through the last verified ingestion window. Owner actions remain available.</p>
+        <p>Signals are current through the last verified ingestion window. Verified records remain available for investigation.</p>
       </div>
     </section>
   );
